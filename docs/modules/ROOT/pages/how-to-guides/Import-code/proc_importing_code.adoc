@@ -1,0 +1,75 @@
+= Importing code to App Studio
+
+[role="_abstract"]
+After you click **Create an application**, the **Grab some code** page opens. From here, choose one of the following source code options to begin building your application:
+
+* **Bring in your own code**
+* **Start with a sample**
+
+== Importing code from your GitHub repository
+
+To use your own code to build your application, complete the following steps:
+
+. Enter the link to your repository in the **Git repository URL** field. {ProductName} verifies your URL right away. You don’t even have to press **Enter**.
+. Optional: Add a **Git reference** to point to code in a specific branch, tag, or commit that you want to use to build your application.
+. Optional: Indicate a **Context directory** to specify the subdirectory for the source code you want to use. 
+
+[NOTE]
+====
+Make sure this path is correct. You might get an error if your build context folder is your root directory but your Dockerfile is in a subdirectory of that folder. If you have a Dockerfile, you can check its path in the **Build & deploy configuration** section.
+====
+[start=4]
+. Click **Import code**. 
+
+[IMPORTANT]
+====
+If you want to use a custom pipeline build, or to grant access to and install the {ProductName} GitHub app on the repository you indicated, you must have the necessary GitHub permissions. If you don't own that repository, or if you don't have the necessary GitHub permissions, you must fork that repository and then specify the new fork URL to add a new component. 
+====
+
+////
+[TIP]
+====
+If {ProductName} can’t access your Git repository, see <<Granting App Studio access to your Git repository>> for help.
+====
+////
+
+{ProductName} scans and analyzes your Git repository to determine how many components to add to your application and which runtime to use. The types of files in your repository, and also your Git directory file hierarchy, determine the number and type of components to add. For example, {ProductName} looks for devfiles and Dockerfiles, and also language-specific build configuration files like pom.xml for Java or package.json for Node.js.
+
+[NOTE]
+====    
+{ProductName} can build applications that are written in the following language stacks and frameworks:
+
+    * Python
+    * Java
+    * Go
+    * Node.js
+    * Quarkus
+    * Spring Boot
+====
+
+== Using a code sample
+// ADD LINK TO CHLOE'S CONTENT!
+
+. Optional: In the code sample **Search** field, begin typing the name of the code you want to work with. If {ProductName} has code samples in that language stack, the code sample results filter accordingly.
+. Optional: If you see a language stack or framework that you want to work with, click either its **Open Git repository** or **Import sample** link.    
+* If you click **Open Git repository**, a new tab opens to the GitHub repository for the code framework you chose.
+* If you click **Import sample**, {ProductName} creates and deploys a new application with the sample code you chose. Check out the open **Overview** tab to monitor your continuous integration/continuous deployment (CI/CD) activity.
+
+[discrete]
+== Granting App Studio access to your Git repository
+
+If {ProductName} can’t access your Git repository, the following message displays: “We can’t access your repository, probably because it’s either private or the URL is incorrect.” If your repository is private, choose one of the following two ways to allow {ProductName} to interact with your repository:
+
+[discrete]
+=== Granting App Studio access to your Git repository through GitHub OAuth
+
+. Under **Authorization**, click **Sign in**. **GitHub Authorize OAuth** opens in a new tab.
+. Click **Authorize _redhat-appstudio_**.
+
+[discrete]
+=== Granting App Studio access to your Git repository with a token
+
+. Under **Authorization**, click **Use a token instead**. The **Authenticate with API token** modal opens.
+. Enter your **Username**.
+. Enter an **API token**.
+. Click **Connect**.
